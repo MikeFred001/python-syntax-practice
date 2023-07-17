@@ -1,21 +1,38 @@
 def convert_temp(unit_in, unit_out, temp):
-    """Convert fahrenheit <-> celsius and return results.
+    # """Convert fahrenheit <-> celsius and return results.
 
-    - unit_in: either "f" or "c" 
-    - unit-out: either "f" or "c"
-    - temp: temperature (in f or c, depending on unit_in)
+    # - unit_in: either "f" or "c"
+    # - unit-out: either "f" or "c"
+    # - temp: temperature (in f or c, depending on unit_in)
 
-    Return results of conversion, if any.
+    # Return results of conversion, if any.
 
-    If unit_in or unit_out are invalid, return "Invalid unit [UNIT_IN]".
+    # If unit_in or unit_out are invalid, return "Invalid unit [UNIT_IN]".
 
-    For example:
+    # For example:
 
-      convert_temp("c", "f", 0)  =>  32.0
-      convert_temp("f", "c", 212) => 100.0
-    """
+    #   convert_temp("c", "f", 0)  =>  32.0
+    #   convert_temp("f", "c", 212) => 100.0
+    # """
 
-    # YOUR CODE HERE
+    # # F ==> C : ((F - 32) * 5)/9
+    # # C ==> F : (C * 1.8) + 32
+
+    if unit_in != "c" or unit_in != "f":
+        return f"Invalid unit {unit_in}"
+
+    if unit_out != "c" or unit_out != "f":
+        return f"Invalid unit {unit_out}"
+
+    if unit_in == "c" and unit_out == "f":
+        return ((temp * 1.8) + 32)
+
+    if unit_in == "f" and unit_out == "c":
+        return ((temp - 32) * 5)/9
+
+    return temp
+
+
 
 
 print("c", "f", 0, convert_temp("c", "f", 0), "should be 32.0")
